@@ -18,11 +18,6 @@ class AdobeSign
     /**
      * @var string
      */
-    protected $baseUri = 'https://api.na1.echosign.com/api/rest';
-
-    /**
-     * @var string
-     */
     protected $version = 'v5';
 
     /**
@@ -96,7 +91,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/base_uris",
+            $this->provider->getBaseUri() . '/' . $this->version . '/base_uris',
             $this->accessToken
         );
 
@@ -113,7 +108,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/transientDocuments",
+            $this->provider->getBaseUri() . '/' . $this->version . "/transientDocuments",
             $this->accessToken, [
                 'headers' => $headers,
                 'body'    => $multipartStream
@@ -133,7 +128,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/agreements",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -156,7 +151,7 @@ class AdobeSign
     ) {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/agreements/$agreementId/participantSets/$participantSetId/participants/$participantId/alternateParticipants",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/participantSets/$participantSetId/participants/$participantId/alternateParticipants",
             $this->accessToken, [
                 'headers' => $headers,
                 'body'    => $alternateParticipantInfo
@@ -174,7 +169,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -189,7 +184,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -204,7 +199,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/auditTrail",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/auditTrail",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -219,7 +214,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/signingUrls",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/signingUrls",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -234,7 +229,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/formData",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/formData",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -251,7 +246,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/combinedDocument?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/combinedDocument?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -268,7 +263,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/combinedDocument/url?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/combinedDocument/url?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -285,7 +280,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/combinedDocument/pagesInfo?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/combinedDocument/pagesInfo?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -302,7 +297,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/documents?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/documents?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -319,7 +314,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/documents/imageUrls?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/documents/imageUrls?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -334,7 +329,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/documents/$documentId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/documents/$documentId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -351,7 +346,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/documents/$documentId/url?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/documents/$documentId/url?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -368,7 +363,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/agreements/$agreementId/documents/$documentId/imageUrls?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/documents/$documentId/imageUrls?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -383,7 +378,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'PUT',
-            "$this->baseUri/$this->version/agreements/$agreementId/status",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/status",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -401,7 +396,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'DELETE',
-            "$this->baseUri/$this->version/agreements/$agreementId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -416,7 +411,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'DELETE',
-            "$this->baseUri/$this->version/agreements/$agreementId/documents",
+            $this->provider->getBaseUri() . '/' . $this->version . "/agreements/$agreementId/documents",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -435,7 +430,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/reminders",
+            $this->provider->getBaseUri() . '/' . $this->version . "/reminders",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -457,7 +452,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/users",
+            $this->provider->getBaseUri() . '/' . $this->version . "/users",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -477,7 +472,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/users?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/users?$query",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -494,7 +489,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/users/$userId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/users/$userId",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -511,7 +506,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'PUT',
-            "$this->baseUri/$this->version/users/$userId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/users/$userId",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -529,7 +524,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'PUT',
-            "$this->baseUri/$this->version/users/$userId/status",
+            $this->provider->getBaseUri() . '/' . $this->version . "/users/$userId/status",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -551,7 +546,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/libraryDocuments",
+            $this->provider->getBaseUri() . '/' . $this->version . "/libraryDocuments",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -569,7 +564,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/libraryDocuments",
+            $this->provider->getBaseUri() . '/' . $this->version . "/libraryDocuments",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -584,7 +579,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/libraryDocuments/$libraryDocumentId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/libraryDocuments/$libraryDocumentId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -599,7 +594,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/libraryDocuments/$libraryDocumentId/auditTrail",
+            $this->provider->getBaseUri() . '/' . $this->version . "/libraryDocuments/$libraryDocumentId/auditTrail",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -616,7 +611,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/libraryDocuments/$libraryDocumentId/combinedDocument?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/libraryDocuments/$libraryDocumentId/combinedDocument?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -631,7 +626,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/libraryDocuments/$libraryDocumentId/documents",
+            $this->provider->getBaseUri() . '/' . $this->version . "/libraryDocuments/$libraryDocumentId/documents",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -646,7 +641,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/libraryDocuments/$libraryDocumentId/documents/$documentId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/libraryDocuments/$libraryDocumentId/documents/$documentId",
             $this->accessToken
         );
 
@@ -659,7 +654,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'DELETE',
-            "$this->baseUri/$this->version/libraryDocuments/$libraryDocumentId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/libraryDocuments/$libraryDocumentId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -678,7 +673,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/widgets",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -696,7 +691,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/widgets",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -711,7 +706,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/widgets/$widgetId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -726,7 +721,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/widgets/$widgetId/auditTrail",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId/auditTrail",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -743,7 +738,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/widgets/$widgetId/combinedDocument?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId/combinedDocument?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -758,7 +753,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/widgets/$widgetId/formData",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId/formData",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -773,7 +768,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/widgets/$widgetId/formData",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId/formData",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -790,7 +785,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/widgets/$widgetId/documents?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId/documents?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -805,7 +800,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/widgets/$widgetId/documents/$documentId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId/documents/$documentId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -820,7 +815,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'PUT',
-            "$this->baseUri/$this->version/widgets/$widgetId/personalize",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId/personalize",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -838,7 +833,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'PUT',
-            "$this->baseUri/$this->version/widgets/$widgetId/status",
+            $this->provider->getBaseUri() . '/' . $this->version . "/widgets/$widgetId/status",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -860,7 +855,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/views/agreementAssets",
+            $this->provider->getBaseUri() . '/' . $this->version . "/views/agreementAssets",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -878,7 +873,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/views/agreementAssetList",
+            $this->provider->getBaseUri() . '/' . $this->version . "/views/agreementAssetList",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -896,7 +891,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/views/settings",
+            $this->provider->getBaseUri() . '/' . $this->version . "/views/settings",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -918,7 +913,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/search/agreementAssetEvents",
+            $this->provider->getBaseUri() . '/' . $this->version . "/search/agreementAssetEvents",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -938,7 +933,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/search/agreementAssetEvents/$searchId?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/search/agreementAssetEvents/$searchId?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -960,7 +955,7 @@ class AdobeSign
     ) {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/workflows/$workflowId/agreements",
+            $this->provider->getBaseUri() . '/' . $this->version . "/workflows/$workflowId/agreements",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -980,7 +975,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/workflows?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/workflows?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -995,7 +990,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/workflows/$workflowId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/workflows/$workflowId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1014,7 +1009,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/groups",
+            $this->provider->getBaseUri() . '/' . $this->version . "/groups",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -1032,7 +1027,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/groups",
+            $this->provider->getBaseUri() . '/' . $this->version . "/groups",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1047,7 +1042,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/groups/$groupId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/groups/$groupId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1062,7 +1057,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/groups/$groupId/users",
+            $this->provider->getBaseUri() . '/' . $this->version . "/groups/$groupId/users",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1077,7 +1072,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'PUT',
-            "$this->baseUri/$this->version/groups/$groupId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/groups/$groupId",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -1095,7 +1090,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'DELETE',
-            "$this->baseUri/$this->version/groups/$groupId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/groups/$groupId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1114,7 +1109,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'POST',
-            "$this->baseUri/$this->version/megaSigns",
+            $this->provider->getBaseUri() . '/' . $this->version . "/megaSigns",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'
@@ -1134,7 +1129,7 @@ class AdobeSign
 
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/megaSigns?$query",
+            $this->provider->getBaseUri() . '/' . $this->version . "/megaSigns?$query",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1149,7 +1144,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/megaSigns/$megaSignId",
+            $this->provider->getBaseUri() . '/' . $this->version . "/megaSigns/$megaSignId",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1164,7 +1159,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/megaSigns/$megaSignId/agreements",
+            $this->provider->getBaseUri() . '/' . $this->version . "/megaSigns/$megaSignId/agreements",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1179,7 +1174,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'GET',
-            "$this->baseUri/$this->version/megaSigns/$megaSignId/formData",
+            $this->provider->getBaseUri() . '/' . $this->version . "/megaSigns/$megaSignId/formData",
             $this->accessToken, [
                 'headers' => $headers
             ]
@@ -1194,7 +1189,7 @@ class AdobeSign
     {
         $request = $this->provider->getAuthenticatedRequest(
             'PUT',
-            "$this->baseUri/$this->version/megaSigns/$megaSignId/status",
+            $this->provider->getBaseUri() . '/' . $this->version . "/megaSigns/$megaSignId/status",
             $this->accessToken, [
                 'headers' => array_merge([
                     'Content-Type' => 'application/json'

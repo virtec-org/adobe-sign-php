@@ -18,6 +18,8 @@ class AdobeSignProvider extends AbstractProvider
 
     protected $baseRefreshTokenUrl = 'https://api.na1.echosign.com/oauth/refresh';
 
+    protected $baseUri = 'https://api.na1.echosign.com/api/rest';
+
     /**
      * AdobeSign constructor.
      * @param array $options
@@ -29,7 +31,26 @@ class AdobeSignProvider extends AbstractProvider
             $this->scope = $options['scope'];
         }
 
+        if (isset($options['datacenter'])) {
+            $this->baseAuthorizationUrl = 'https://secure.' . $options['datacenter'] . '.echosign.com/public/oauth';
+            $this->baseAccessTokenUrl = 'https://api.' . $options['datacenter'] . '.echosign.com/oauth/token';
+            $this->baseRefreshTokenUrl = 'https://api.' . $options['datacenter'] . '.echosign.com/oauth/refresh';
+            $this->baseUri = 'https://api.' . $options['datacenter'] . '.echosign.com/api/rest';
+        }
+
         parent::__construct($options, $collaborators);
+    }
+
+    /**
+     * Returns the base URL for api calls.
+     *
+     * Eg. https://oauth.service.com/authorize
+     *
+     * @return string
+     */
+    public function getBaseUri()
+    {
+        return $this->baseUri;
     }
 
     /**
