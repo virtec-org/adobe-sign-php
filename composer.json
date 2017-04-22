@@ -1,6 +1,7 @@
 {
   "name": "ajohnson6494/adobe-sign-php",
   "description": "Adobe Sign PHP SDK",
+  "license": "GPL-3.0+",
   "require": {
     "php": ">=5.6.0",
     "league/oauth2-client": "^1.4"
