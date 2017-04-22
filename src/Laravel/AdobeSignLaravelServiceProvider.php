@@ -20,7 +20,7 @@ class AdobeSignLaravelServiceProvider extends ServiceProvider
         $config = $this->app['path.config'] . '/adobe-sign.php';
 
         $this->publishes([
-            __DIR__ . '/../config/config.php' => $config
+            __DIR__ . '/config/config.php' => $config
         ]);
     }
 
@@ -31,7 +31,7 @@ class AdobeSignLaravelServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'adobe-sign');
+        $this->mergeConfigFrom(__DIR__ . '/config/config.php', 'adobe-sign');
 
         $this->app->bind('adobe-sign-laravel', $this->createAdobeSignLaravelClosure());
     }
