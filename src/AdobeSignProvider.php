@@ -8,7 +8,7 @@ use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
 
-class AdobeSign extends AbstractProvider
+class AdobeSignProvider extends AbstractProvider
 {
     protected $scope;
 
